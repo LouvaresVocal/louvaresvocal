@@ -1,95 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Em Breve</title>
-    <link rel="icon" href="Logo.png" sizes="32">
-    <style>
-         body {
-            font-family: "Open Sans", sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: linear-gradient(#ffffff,#bec7d4, #384767);
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página em Construção + Rádio Novo Tempo</title>
+  <link rel="icon" href="Logo.png" sizes="32">
+  <style>
+    body {
+      font-family: "Open Sans", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: linear-gradient(#ffffff,#bec7d4, #384767);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
 
-        #movingLogo {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 50px;
-            left: 50px;
-            pointer-events: none;
-        }
+    /* Logo em movimento */
+    #movingLogo {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 50px;
+      left: 50px;
+      pointer-events: none;
+    }
 
-        .blink {
-            font-size: 20px;
-            font-weight: bold;
-            color: rgba(253, 0, 0, 0.593); /* cor fraquinha */
-            animation: blink 1s infinite;
-            text-align: center;
-            margin-top: 30px;
-        }
+    /* Texto piscando */
+    .blink {
+      font-size: 20px;
+      font-weight: bold;
+      color: rgba(253, 0, 0, 0.593);
+      animation: blink 1s infinite;
+      margin: 20px 0;
+    }
 
-        @keyframes blink {
-            0%, 50%, 100% {
-                opacity: 1.5;
-            }
-            25%, 80% {
-                opacity: 0.5;
-            }
-        }
-    </style>
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 80% { opacity: 0.3; }
+    }
+
+    /* Player Rádio */
+    h1 {
+      color: #222;
+      margin-top: 20px;
+      font-size: 15px;
+    }
+    #radio {
+      width: 60%;
+      max-width: 400px;
+      height: 40px;
+      margin: 20px auto;
+      display: block;
+      background: transparent;
+      object-fit: none;
+      opacity: 0.5;
+    }
+    #playBtn {
+      padding: 10px 20px;
+      font-size: 14px;
+      background: #42b3dc;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #playBtn:hover {
+      background: #559cb4;
+    }
+  </style>
 </head>
 <body>
-    <img id="movingLogo" src="Pulse.png" alt="Logo">
-    <div class="blink">🚧 EM BREVE 🚧<br> 🚧PÁGINA EM CONSTRUÇÃO 🚧</div>
+  <!-- Logo que se move pela tela -->
+  <img id="movingLogo" src="Pulse.png" alt="Logo">
 
-    <script>
-        const logo = document.getElementById('movingLogo');
+  <!-- Aviso em construção -->
+  <div class="blink">🚧 EM BREVE 🚧<br>🚧 PÁGINA EM CONSTRUÇÃO 🚧</div>
 
-        // Velocidade inicial (em px por frame)
-        let dx = Math.random() * 1.5 + 1; // Horizontal
-        let dy = Math.random() * 1.5 + 1; // Vertical
+  <!-- Player Rádio -->
+  <h1>🎵 Rádio Novo Tempo🎶📻</h1>
+  <video id="radio" controls playsinline></video>
+  <br>
+  <button id="playBtn">▶️ Ouvir Agora</button>
 
-        // Direção aleatória
-        dx *= Math.random() < 0.5 ? 1 : -1;
-        dy *= Math.random() < 0.5 ? 1 : -1;
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    // Logo em movimento
+    const logo = document.getElementById('movingLogo');
+    let dx = Math.random() * 1.5 + 1;
+    let dy = Math.random() * 1.5 + 1;
+    dx *= Math.random() < 0.5 ? 1 : -1;
+    dy *= Math.random() < 0.5 ? 1 : -1;
 
-        function moveLogo() {
-            let rect = logo.getBoundingClientRect();
-            let logoWidth = rect.width;
-            let logoHeight = rect.height;
+    function moveLogo() {
+      let rect = logo.getBoundingClientRect();
+      let logoWidth = rect.width;
+      let logoHeight = rect.height;
 
-            let maxX = window.innerWidth - logoWidth;
-            let maxY = window.innerHeight - logoHeight;
+      let maxX = window.innerWidth - logoWidth;
+      let maxY = window.innerHeight - logoHeight;
 
-            let currentX = rect.left;
-            let currentY = rect.top;
+      let currentX = rect.left;
+      let currentY = rect.top;
 
-            // Atualiza posição
-            let newX = currentX + dx;
-            let newY = currentY + dy;
+      let newX = currentX + dx;
+      let newY = currentY + dy;
 
-            // Verifica colisão com bordas e muda direção aleatoriamente
-            if (newX <= 0 || newX >= maxX) {
-                dx = -dx * (Math.random() * 0.5 + 0.75); // Inverte e muda velocidade aleatória
-            }
-            if (newY <= 0 || newY >= maxY) {
-                dy = -dy * (Math.random() * 0.5 + 0.75);
-            }
+      if (newX <= 0 || newX >= maxX) {
+        dx = -dx * (Math.random() * 0.5 + 0.75);
+      }
+      if (newY <= 0 || newY >= maxY) {
+        dy = -dy * (Math.random() * 0.5 + 0.75);
+      }
 
-            // Atualiza a posição da imagem
-            logo.style.left = Math.max(0, Math.min(maxX, newX)) + 'px';
-            logo.style.top = Math.max(0, Math.min(maxY, newY)) + 'px';
+      logo.style.left = Math.max(0, Math.min(maxX, newX)) + 'px';
+      logo.style.top = Math.max(0, Math.min(maxY, newY)) + 'px';
 
-            requestAnimationFrame(moveLogo);
-        }
+      requestAnimationFrame(moveLogo);
+    }
+    moveLogo();
 
-        moveLogo();
-    </script>
+    // Player da Rádio
+    const streamURL = "https://stream.live.novotempo.com/radio/smil:radionovotempo.smil/playlist.m3u8";
+    const video = document.getElementById("radio");
+    const btn = document.getElementById("playBtn");
+
+    function initPlayer() {
+      if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = streamURL;
+      } else if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(streamURL);
+        hls.attachMedia(video);
+      } else {
+        alert("Seu navegador não suporta streaming HLS.");
+      }
+    }
+
+    initPlayer();
+
+    btn.addEventListener("click", () => {
+      video.play().catch(err => {
+        console.error("Erro ao iniciar:", err);
+      });
+    });
+  </script>
 </body>
 </html>
