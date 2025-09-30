@@ -8,7 +8,7 @@
 
     <!-- Ícone da aba do navegador -->
     <link rel="icon" href="image/Logo.png" sizes="32">
-
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <!-- Manifesto PWA para instalação como aplicativo -->
     <link rel="manifest" href="manifest.json">
 
@@ -196,24 +196,24 @@
         }
 
         h1 {
-            color: #013a63;
-            margin-top: 20px;
+            color: #fff;
+            margin-top: 2px;
             margin-bottom: 2px;
-            font-size: 15px;
+            font-size: 13px;
             }
             #radio {
             width: 60%;
             max-width: 400px;
             height: 40px;
-            margin: 20px auto;
+            margin: 10px auto;
             display: block;
             background: transparent;
             object-fit: none;
             opacity: 0.5;
             }
             #playBtn {
-            padding: 10px 20px;
-            font-size: 14px;
+            padding: 10px;
+            font-size: 13px;
             background: #a9d3fd;
             color: #013a63;
             border: none;
@@ -298,11 +298,15 @@
         <!-- BOTÕES DE AÇÃO / LINKS           -->
         <!-- =============================== -->
         <div class="action">
-            <h1>🎵 Rádio Novo Tempo🎶📻</h1>
+            <a class="saiba-mais" href="saibamais.html" rel="noopener">
+                Saiba mais.
+            </a>
+            
             <button id="playBtn">
                 <img src="image/nt.png" width="25px" alt="Logo Rádio Novo Tempo" style="vertical-align: middle; margin-right: 2px;">
                  Ouvir Agora
-                </button>
+            </button>
+            <h1><i class="fi fi-rr-music-alt"></i> Rádio Novo Tempo <i class="fi fi-rr-fm-radio"></i></h1>
             <video id="radio" controls playsinline></video>
         </div>
 
