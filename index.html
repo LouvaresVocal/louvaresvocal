@@ -2,182 +2,236 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <!-- Responsividade para dispositivos móveis -->
     <meta name="viewport" content="width=414, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Louvares Vocal</title>
-    <link rel="icon" href="Logo.png" sizes="32">
+
+    <!-- Ícone da aba do navegador -->
+    <link rel="icon" href="image/Logo.png" sizes="32">
+
+    <!-- Manifesto PWA para instalação como aplicativo -->
+    <link rel="manifest" href="manifest.json">
+
     <style>
+        /* =============================== */
+        /* VARIÁVEIS GLOBAIS              */
+        /* =============================== */
         :root {
-            --primary-color: #ff0000;
-            --insta-color: #e1306c;
-            --location-color: #4274e0;
-            --button-size: 56px;
-            --shadow: 0 2px 8px rgba(0,0,0,0.3);
+            --primary-color: #ff0000;   /* Cor principal do botão YouTube */
+            --insta-color: #e1306c;     /* Cor do botão Instagram */
+            --location-color: #4274e0;  /* Cor do botão de localização */
+            --button-size: 56px;        /* Tamanho dos botões flutuantes */
+            --shadow: 0 2px 8px rgba(0,0,0,0.3); /* Sombra padrão dos elementos */
         }
 
+        /* =============================== */
+        /* ESTILO GERAL DO BODY            */
+        /* =============================== */
         body {
-            font-family: "Open Sans", sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: linear-gradient(#ffffff, #384767);
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
+            font-family: "Open Sans", sans-serif; /* Fonte padrão do site */
+            margin: 0;                             /* Sem margem */
+            padding: 0;                            /* Sem padding */
+            background-image: linear-gradient(#ffffff, #384767); /* Fundo em degradê */
+            display: flex;                         /* Flexbox para centralizar conteúdo */
+            justify-content: center;               /* Centraliza horizontalmente */
+            min-height: 100vh;                     /* Ocupa altura total da tela */
         }
 
+        /* =============================== */
+        /* CONTAINER PRINCIPAL             */
+        /* =============================== */
         .container {
-            max-width: 414px;
-            width: 100vw;
-            min-height: 100vh;
-            padding: 24px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            max-width: 414px;              /* Largura máxima do iPhone SE */
+            width: 100vw;                  /* Ocupa largura total da viewport */
+            min-height: 100vh;             /* Altura mínima igual a tela */
+            padding: 24px;                 /* Espaçamento interno */
+            box-sizing: border-box;        /* Inclui padding na largura/altura */
+            display: flex;                 /* Flexbox para organização vertical */
+            flex-direction: column;        /* Coloca itens em coluna */
+            align-items: center;           /* Centraliza horizontalmente */
         }
 
+        /* =============================== */
+        /* IMAGEM DE PERFIL / CAPA         */
+        /* =============================== */
         .profile-pic{
-            width: 100%;
-            height: 210px;
+            width: 100%;                   /* Ocupa 100% da largura do container */
+            height: 210px;                 /* Altura fixa da seção de perfil */
             align-content: center;
-            text-align: center;
-            margin-bottom: 2px;
-            padding-bottom: 2px;
+            text-align: center;            /* Centraliza conteúdo dentro da div */
+            margin-bottom: 2px;            /* Espaço abaixo */
+            padding-bottom: 2px;           /* Pequeno padding inferior */
         }
 
         #Logo {
-            width: 80%;
-            height: auto;
-            margin-bottom: 10px;
+            width: 80%;                     /* Logo ocupa 80% da largura da seção */
+            height: auto;                   /* Mantém proporção da imagem */
+            margin-bottom: 10px;            /* Espaço abaixo do logo */
         }
 
+        /* =============================== */
+        /* NOME / TÍTULO (opcional)        */
+        /* =============================== */
         .name {
-            text-align: center;
-            width: 150px;
-            margin-bottom: 1px;
-            font-size: 1.5rem;
-            font-weight: bold;
+            text-align: center;             /* Centraliza texto */
+            width: 150px;                   /* Largura fixa do container do nome */
+            margin-bottom: 1px;             /* Pequeno espaçamento */
+            font-size: 1.5rem;              /* Tamanho da fonte */
+            font-weight: bold;              /* Negrito */
         }
 
+        /* =============================== */
+        /* DESCRIÇÃO E VERSÍCULO           */
+        /* =============================== */
         .description {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 13px;
-            color: #013a63;
-            text-align: center;
-            margin-bottom: 0px;
-            margin-top: 2px;
-            padding: 1px;
+            font-family: Arial, Helvetica, sans-serif; /* Fonte alternativa */
+            font-size: 13px;                             /* Tamanho da fonte */
+            color: #013a63;                              /* Cor do texto */
+            text-align: center;                          /* Centraliza texto */
+            margin-bottom: 0px;                          /* Sem margem inferior */
+            margin-top: 2px;                             /* Pequena margem superior */
+            padding: 1px;                                /* Pequeno padding interno */
         }
 
         .verso{
-            color: #457b9d;
-            font-style: italic;
+            color: #457b9d;      /* Cor do verso bíblico */
+            font-style: italic;   /* Texto em itálico */
         }
 
+        /* =============================== */
+        /* SEÇÃO DE VÍDEO EMBED            */
+        /* =============================== */
         .video-section {
-            width: 86%;
-            height: 180px;
-            display: flex;
+            width: 86%;                /* Largura do container do vídeo */
+            height: 180px;             /* Altura fixa */
+            display: flex;             /* Flexbox para centralizar */
             justify-content: center;
-            margin-bottom: 18px;
+            margin-bottom: 18px;       /* Espaço abaixo da seção */
         }
 
         iframe {
-            width: 300px;
-            height: 169px;
-            max-width: 350px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            outline: none;
-            background: #000;
+            width: 300px;              /* Largura do iframe */
+            height: 169px;             /* Altura do iframe */
+            max-width: 350px;          /* Largura máxima */
+            border-radius: 16px;       /* Bordas arredondadas */
+            box-shadow: var(--shadow); /* Sombra do vídeo */
+            outline: none;             /* Remove contorno ao focar */
+            background: #000;          /* Fundo preto */
         }
-        
-        /* Botões flutuantes laterais */
+
+        /* =============================== */
+        /* BOTÕES FLUTUANTES LATERAIS      */
+        /* =============================== */
         .floating-buttons {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            display: flex;
+            position: fixed;           /* Fixo na tela */
+            right: 20px;               /* Distância da borda direita */
+            bottom: 20px;              /* Distância da borda inferior */
+            display: flex;             /* Flexbox em coluna */
             flex-direction: column;
-            gap: 16px;
-            z-index: 999;
+            gap: 16px;                 /* Espaçamento entre botões */
+            z-index: 999;              /* Sempre acima de outros elementos */
         }
 
         .floating-buttons a {
-            width: var(--button-size);
-            height: var(--button-size);
-            border-radius: 50%;
+            width: var(--button-size); /* Largura do botão */
+            height: var(--button-size);/* Altura do botão */
+            border-radius: 50%;        /* Botão circular */
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s;
+            box-shadow: var(--shadow); /* Sombra do botão */
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s; /* Animação hover */
             color: #fff;
             text-decoration: none;
-            opacity: 0.6;
+            opacity: 0.6;              /* Transparência inicial */
         }
 
         .floating-buttons a:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            opacity: 1;
+            transform: translateY(-4px); /* Levanta botão ao passar mouse */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4); /* Sombra maior */
+            opacity: 1;                   /* Fica totalmente visível */
         }
 
+        /* Cores específicas para cada botão */
         .yt-btn { background: var(--primary-color); }
         .insta-btn { background: var(--insta-color); }
         .location-btn { background: var(--location-color); }
 
+        /* Ícones dentro dos botões */
         .floating-buttons svg, .floating-buttons img {
             width: 25px;
             height: 25px;
         }
+
+        /* =============================== */
+        /* SEÇÃO DE AÇÃO / LINKS           */
+        /* =============================== */
         .action {
-            width: 100%;
-            display: flex;
+            width: 100%;                  /* Ocupa 100% do container */
+            display: flex;                /* Flexbox vertical */
             flex-direction: column;
-            gap: 16px;
-            align-items: center;
-            margin-bottom: 20px;
+            gap: 16px;                    /* Espaçamento entre botões */
+            align-items: center;          /* Centraliza horizontalmente */
+            margin-bottom: 20px;          /* Espaço abaixo */
         }
+
         .saiba-mais {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 24px;
-            border: none;
-            border-radius: 50px;
+            gap: 8px;                     /* Espaçamento entre ícone e texto */
+            padding: 10px 24px;           /* Padding interno do botão */
+            border: none;                 /* Sem borda */
+            border-radius: 50px;          /* Botão arredondado */
             font-size: 1rem;
             font-weight: 500;
             cursor: pointer;
-            text-decoration: none;
-            box-shadow: var(--shadow);
-        }
-        .saiba-mais {
-            color: #013a63;
-            background-color: #a9d3fd;
-        }
-        .saiba-mais:hover {
-            background-color: #95c5e7;
+            text-decoration: none;        /* Remove sublinhado */
+            box-shadow: var(--shadow);    /* Sombra do botão */
+            color: #013a63;               /* Cor do texto */
+            background-color: #a9d3fd;   /* Cor de fundo */
         }
 
-        @media (min-width: 475px) {
+        .saiba-mais:hover {
+            background-color: #95c5e7;   /* Cor de fundo ao passar mouse */
+        }
+
+        /* =============================== */
+        /* RESPONSIVIDADE                  */
+        /* =============================== */
+        @media (min-width: 1440px) {
             .container {
-                width: 80vw;
-                padding: 5px;
+                width: calc(50vw - 10px);   /* Ajuste proporcional em telas maiores */
             }
             .video-section iframe {
-                max-width: 80vw;
+                max-width: 60vw;            /* Aumenta tamanho do vídeo */
             }
         }
     </style>
 </head>
+
 <body>
+    <!-- =============================== -->
+    <!-- CONTAINER PRINCIPAL             -->
+    <!-- =============================== -->
     <div class="container">
+
+        <!-- =============================== -->
+        <!-- LOGO / CAPA DO MINISTÉRIO       -->
+        <!-- =============================== -->
         <div class="profile-pic">
-            <img id="Logo" src="Capa.png" alt="Logo">
+            <img id="Logo" src="image/Capa.png" alt="Logo">
         </div>
+
+        <!-- =============================== -->
+        <!-- NOME / TÍTULO (opcional)       -->
+        <!-- =============================== -->
         <!-- <div class="name">
             <img class="name" src="nome.png" alt="">
         </div> -->
+
+        <!-- =============================== -->
+        <!-- DESCRIÇÃO E VERSÍCULO           -->
+        <!-- =============================== -->
         <div class="description">
             <h3>
                 Cantarei ao Senhor enquanto eu viver;<br> 
@@ -185,6 +239,10 @@
                 <small class="verso">"SALMOS 104:33"</small>
             </h3>
         </div>
+
+        <!-- =============================== -->
+        <!-- VÍDEO EMBED YOUTUBE             -->
+        <!-- =============================== -->
         <div class="video-section">
             <iframe
                 id="yt-iframe"
@@ -197,37 +255,69 @@
                 allowfullscreen>
             </iframe>
         </div>
+
+        <!-- =============================== -->
+        <!-- TEXTO DE APRESENTAÇÃO           -->
+        <!-- =============================== -->
         <div style="text-align: center;padding: 5px;margin-top: -5px;margin-bottom: 10px; color: #ffffff; font-size: 12px;font-family: 'Open Sans' sans-serif;">
             <div style="color: #cc0000;font-size: 12px;">contato via instagram</div>
             <p>Louvares Vocal é um ministério de louvor e adoração, <br> dedicado a levar a mensagem de Cristo através da música. 
                 <br> Junte-se a nós nessa jornada de fé e louvor!</p>
         </div>
+
+        <!-- =============================== -->
+        <!-- BOTÕES DE AÇÃO / LINKS           -->
+        <!-- =============================== -->
         <div class="action">
-            <a class="saiba-mais" href="saibamais.html" target="_blank" rel="noopener">
+            <a class="saiba-mais" href="saibamais.html" rel="noopener">
                 Saiba mais.
             </a>
             <a class="saiba-mais" href="saibamais.html" rel="noopener">
-                <img src="nt.png" width="30px">Ouça a Novo Tempo
+                <img src="image/nt.png" width="30px">Ouça a Novo Tempo
             </a>
         </div>
+
+        <!-- =============================== -->
+        <!-- RODAPÉ                          -->
+        <!-- =============================== -->
         <footer style="text-align: center;align-items: end; padding: 0px;margin-bottom: 10px;margin-top: 30%; color: #a9d3fd; font-size: 10px;">
             <p>Louvares Vocal &copy; 2025. Todos os direitos reservados</p>
         </footer>
     </div>
 
-    <!-- Botões flutuantes circulares laterais com transparência -->
+    <!-- =============================== -->
+    <!-- BOTÕES FLUTUANTES CIRCULARES     -->
+    <!-- =============================== -->
     <div class="floating-buttons">
+        <!-- Botão YouTube -->
         <a class="yt-btn" href="https://youtube.com/@LouvaresVocal" target="_blank">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
                 <path d="M23.498 6.186a2.994 2.994 0 0 0-2.108-2.117C19.222 3.5 12 3.5 12 3.5s-7.222 0-9.39.569A2.994 2.994 0 0 0 .502 6.186C0 8.36 0 12 0 12s0 3.64.502 5.814a2.994 2.994 0 0 0 2.108 2.117C4.778 20.5 12 20.5 12 20.5s7.222 0 9.39-.569a2.994 2.994 0 0 0 2.108-2.117C24 15.64 24 12 24 12s0-3.64-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
         </a>
+
+        <!-- Botão Instagram -->
         <a class="insta-btn" href="https://instagram.com/louvaresvocal" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
         </a>
+
+        <!-- Botão Localização -->
         <a class="location-btn" href="https://igrejas.adventistas.org/" target="_blank">
-            <img src="igreja.png" width="24" height="24" alt="Igreja Icon">
+            <img src="image/igreja.png" width="24" height="24" alt="Igreja Icon">
         </a>
     </div>
+
+    <!-- =============================== -->
+    <!-- SERVICE WORKER PARA PWA          -->
+    <!-- =============================== -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("service-worker.js")
+                    .then(reg => console.log("Service Worker registrado:", reg))
+                    .catch(err => console.log("Erro ao registrar Service Worker:", err));
+            });
+        }
+    </script>
 </body>
 </html>
