@@ -31,10 +31,18 @@
             font-family: "Open Sans", sans-serif; /* Fonte padrão do site */
             margin: 0;                             /* Sem margem */
             padding: 0;                            /* Sem padding */
-            background-image: linear-gradient(#ffffff, #384767); /* Fundo em degradê */
+            background-image: linear-gradient(#F7F7F8, #E8C761); /* Fundo em degradê */
             display: flex;                         /* Flexbox para centralizar conteúdo */
             justify-content: center;               /* Centraliza horizontalmente */
             min-height: 100vh;                     /* Ocupa altura total da tela */
+        }
+        .luz img {
+            position: fixed;
+            top: 0px;
+            left: 0;
+            width: 100%;
+            z-index: -1; /* Coloca a imagem atrás do conteúdo */
+            opacity: 0.9; /* Ajusta a opacidade para um efeito sutil */
         }
 
         /* =============================== */
@@ -196,7 +204,7 @@
         }
 
         h1 {
-            color: #fff;
+            color: #194419;
             margin-top: 2px;
             margin-bottom: 2px;
             font-size: 13px;
@@ -209,7 +217,7 @@
             display: block;
             background: transparent;
             object-fit: none;
-            opacity: 0.5;
+            opacity: 0;
             }
             #playBtn {
             padding: 10px;
@@ -239,11 +247,14 @@
 </head>
 
 <body>
+    <div class="luz">
+            <img src="image/luz.png" alt="">
+        </div>
     <!-- =============================== -->
     <!-- CONTAINER PRINCIPAL             -->
     <!-- =============================== -->
     <div class="container">
-
+        
         <!-- =============================== -->
         <!-- LOGO / CAPA DO MINISTÉRIO       -->
         <!-- =============================== -->
@@ -288,7 +299,7 @@
         <!-- =============================== -->
         <!-- TEXTO DE APRESENTAÇÃO           -->
         <!-- =============================== -->
-        <div style="text-align: center;padding: 5px;margin-top: -5px;margin-bottom: 10px; color: #ffffff; font-size: 12px;font-family: 'Open Sans' sans-serif;">
+        <div style="text-align: center;padding: 5px;margin-top: -5px;margin-bottom: 10px; color: #19441F; font-size: 12px;font-family: 'Open Sans' sans-serif;">
             <div style="color: #cc0000;font-size: 12px;">contato via instagram</div>
             <p>Louvares Vocal é um ministério de louvor e adoração, <br> dedicado a levar a mensagem de Cristo através da música. 
                 <br> Junte-se a nós nessa jornada de fé e louvor!</p>
@@ -313,7 +324,7 @@
         <!-- =============================== -->
         <!-- RODAPÉ                          -->
         <!-- =============================== -->
-        <footer style="text-align: center;align-items: end; padding: 0px;margin-bottom: 10px;margin-top: 30%; color: #a9d3fd; font-size: 10px;">
+        <footer style="text-align: center;align-items: end; padding: 0px;margin-bottom: 10px;margin-top: 30%; color: #19441F; font-size: 10px;">
             <p>Louvares Vocal &copy; 2025. Todos os direitos reservados</p>
         </footer>
     </div>
@@ -357,7 +368,7 @@
   <script>
     // Inicialização do HLS.js
     // Player da Rádio
-    const streamURL = "https://stream.live.novotempo.com/radio/smil:rntRioRJ.smil/playlist.m3u8";
+    const streamURL = "https://stream.live.novotempo.com/radio/smil:radionovotempo.smil/playlist.m3u8";
     const video = document.getElementById("radio");
     const btn = document.getElementById("playBtn");
 
@@ -383,5 +394,3 @@
   </script>
 </body>
 </html>
-
-
