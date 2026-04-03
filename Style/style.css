@@ -127,9 +127,9 @@ body {
 }
 
 .saiba-mais, #playBtn {
-    width: 80%; /* Largura fluida para o botão */
+    width: 50%; /* Largura fluida para o botão */
     max-width: 280px;
-    padding: 12px 20px;
+    padding: 12px 10px;
     border-radius: 50px;
     font-size: 14px;
     font-weight: bold;
