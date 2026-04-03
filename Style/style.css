@@ -1,241 +1,215 @@
- /* =============================== */
-        /* VARIÁVEIS GLOBAIS              */
-        /* =============================== */
-        :root {
-            --primary-color: #ff0000;   /* Cor principal do botão YouTube */
-            --insta-color: #e1306c;     /* Cor do botão Instagram */
-            --location-color: #4274e0;  /* Cor do botão de localização */
-            --button-size: 56px;        /* Tamanho dos botões flutuantes */
-            --shadow: 0 2px 8px rgba(255, 255, 255, 0.3); /* Sombra padrão dos elementos */
-        }
+/* =============================== */
+/* 1. VARIÁVEIS E CONFIGURAÇÕES    */
+/* =============================== */
+:root {
+    --primary-color: #ff0000;   /* YouTube */
+    --insta-color: #e1306c;     /* Instagram */
+    --location-color: #4274e0;  /* Localização */
+    --bg-dark: #191B49;         /* Cor de fundo principal */
+    --accent-light: #f1bcf1;    /* Cor dos botões (rosa claro) */
+    --button-size: 56px;        /* Tamanho botões flutuantes */
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
 
-        /* =============================== */
-        /* ESTILO GERAL DO BODY            */
-        /* =============================== */
-        body {
-            font-family: "Open Sans", sans-serif; /* Fonte padrão do site */
-            margin: 0;                             /* Sem margem */
-            padding: 0;                            /* Sem padding */
-            background-image: linear-gradient(#191B49, #191b49); /* Fundo em degradê */
-            display: flex;                         /* Flexbox para centralizar conteúdo */
-            justify-content: center;               /* Centraliza horizontalmente */
-            min-height: 100vh;                     /* Ocupa altura total da tela */
-        }
-        .luz img {
-            position: fixed;
-            top: 0px;
-            left: 0;
-            width: 100%;
-            z-index: -1; /* Coloca a imagem atrás do conteúdo */
-            opacity: 0.9; /* Ajusta a opacidade para um efeito sutil */
-        }
-        .LuzInferior img {
-            position: fixed;
-            bottom: 0px;
-            left: 0;
-            width: 100%;
-            z-index: -1; /* Coloca a imagem atrás do conteúdo */
-            opacity: 0.9; /* Ajusta a opacidade para um efeito sutil */
-        }
+* {
+    box-sizing: border-box; /* Garante que padding não quebre a largura */
+}
 
-        /* =============================== */
-        /* CONTAINER PRINCIPAL             */
-        /* =============================== */
-        .container {
-            max-width: 414px;              /* Largura máxima do iPhone SE */
-            width: 100vw;                  /* Ocupa largura total da viewport */
-            min-height: 100vh;             /* Altura mínima igual a tela */
-            padding: 24px;                 /* Espaçamento interno */
-            box-sizing: border-box;        /* Inclui padding na largura/altura */
-            display: flex;                 /* Flexbox para organização vertical */
-            flex-direction: column;        /* Coloca itens em coluna */
-            align-items: center;           /* Centraliza horizontalmente */
-        }
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden; /* Evita barra de rolagem lateral */
+}
 
-        /* =============================== */
-        /* IMAGEM DE PERFIL / CAPA         */
-        /* =============================== */
-        .profile-pic{
-            width: 100%;                   /* Ocupa 100% da largura do container */
-            height: 210px;                 /* Altura fixa da seção de perfil */
-            align-content: center;
-            text-align: center;            /* Centraliza conteúdo dentro da div */
-            margin-bottom: 2px;            /* Espaço abaixo */
-            padding-bottom: 2px;           /* Pequeno padding inferior */
-        }
+/* Imagens de Fundo (Luzes) */
+.luz img, .LuzInferior img {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.8;
+    pointer-events: none; /* Garante que as imagens não atrapalhem cliques */
+}
 
-        #Logo {
-            width: 80%;                     /* Logo ocupa 80% da largura da seção */
-            height: auto;                   /* Mantém proporção da imagem */
-            margin-bottom: 10px;            /* Espaço abaixo do logo */
-        }
+.luz img { top: 0; }
+.LuzInferior img { bottom: 0; }
 
-        /* =============================== */
-        /* NOME / TÍTULO (opcional)        */
-        /* =============================== */
-        .name {
-            text-align: center;             /* Centraliza texto */
-            width: 150px;                   /* Largura fixa do container do nome */
-            margin-bottom: 1px;             /* Pequeno espaçamento */
-            font-size: 1.5rem;              /* Tamanho da fonte */
-            font-weight: bold;              /* Negrito */
-        }
+/* =============================== */
+/* 2. CONTAINER PRINCIPAL          */
+/* =============================== */
+.container {
+    width: 100%;
+    max-width: 450px; /* Limite para não esticar demais em monitores */
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
 
-        /* =============================== */
-        /* DESCRIÇÃO E VERSÍCULO           */
-        /* =============================== */
-        .description {
-            font-family: Arial, Helvetica, sans-serif; /* Fonte alternativa */
-            font-size: 13px;                             /* Tamanho da fonte */
-            color: #ffffff;                              /* Cor do texto */
-            text-align: center;                          /* Centraliza texto */
-            margin-bottom: 0px;                          /* Sem margem inferior */
-            margin-top: 2px;                             /* Pequena margem superior */
-            padding: 1px;                                /* Pequeno padding interno */
-        }
+/* Logo / Capa */
+.profile-pic {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
 
-        .verso {
-            color: #f1bcfc;      /* Cor do verso bíblico */
-            font-style: italic;   /* Texto em itálico */
-        }
+#Logo {
+    width: 85%; /* Responsivo: ocupa 85% do container pai */
+    max-width: 320px;
+    height: auto;
+}
 
-        /* =============================== */
-        /* SEÇÃO DE VÍDEO EMBED            */
-        /* =============================== */
-        .video-section {
-            width: 86%;                /* Largura do container do vídeo */
-            height: 180px;             /* Altura fixa */
-            display: flex;             /* Flexbox para centralizar */
-            justify-content: center;
-            margin-bottom: 18px;       /* Espaço abaixo da seção */
-        }
+/* Textos e Versículos */
+.description {
+    color: #ffffff;
+    text-align: center;
+    margin: 10px 0;
+}
 
-        iframe {
-            width: 300px;              /* Largura do iframe */
-            height: 169px;             /* Altura do iframe */
-            max-width: 350px;          /* Largura máxima */
-            border-radius: 16px;       /* Bordas arredondadas */
-            box-shadow: var(--shadow); /* Sombra do vídeo */
-            outline: none;             /* Remove contorno ao focar */
-            background: #000;          /* Fundo preto */
-        }
+.description h3 {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: normal;
+}
 
-        /* =============================== */
-        /* BOTÕES FLUTUANTES LATERAIS      */
-        /* =============================== */
-        .floating-buttons {
-            position: fixed;           /* Fixo na tela */
-            right: 20px;               /* Distância da borda direita */
-            bottom: 20px;              /* Distância da borda inferior */
-            display: flex;             /* Flexbox em coluna */
-            flex-direction: column;
-            gap: 16px;                 /* Espaçamento entre botões */
-            z-index: 999;              /* Sempre acima de outros elementos */
-        }
+.verso {
+    color: #f1bcfc;
+    font-style: italic;
+    display: block;
+    margin-top: 5px;
+}
 
-        .floating-buttons a {
-            width: var(--button-size); /* Largura do botão */
-            height: var(--button-size);/* Altura do botão */
-            border-radius: 50%;        /* Botão circular */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: var(--shadow); /* Sombra do botão */
-            transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s; /* Animação hover */
-            color: #fff;
-            text-decoration: none;
-            opacity: 0.6;              /* Transparência inicial */
-        }
+/* =============================== */
+/* 3. VÍDEO RESPONSIVO (MÁGICA)    */
+/* =============================== */
+.video-section {
+    width: 100%; /* Ocupa a largura total do container */
+    max-width: 400px;
+    margin: 15px 0;
+}
 
-        .floating-buttons a:hover {
-            transform: translateY(-4px); /* Levanta botão ao passar mouse */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4); /* Sombra maior */
-            opacity: 1;                   /* Fica totalmente visível */
-        }
+/* Técnica para manter proporção 16:9 em qualquer tela */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
 
-        /* Cores específicas para cada botão */
-        .yt-btn { background: var(--primary-color); }
-        .insta-btn { background: var(--insta-color); }
-        .location-btn { background: var(--location-color); }
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
-        /* Ícones dentro dos botões */
-        .floating-buttons svg, .floating-buttons img {
-            width: 25px;
-            height: 25px;
-        }
+/* =============================== */
+/* 4. BOTÕES DE AÇÃO E RADIO       */
+/* =============================== */
+.action {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
 
-        /* =============================== */
-        /* SEÇÃO DE AÇÃO / LINKS           */
-        /* =============================== */
-        .action {
-            width: 100%;                  /* Ocupa 100% do container */
-            display: flex;                /* Flexbox vertical */
-            flex-direction: column;
-            gap: 16px;                    /* Espaçamento entre botões */
-            align-items: center;          /* Centraliza horizontalmente */
-            margin-bottom: 20px;          /* Espaço abaixo */
-        }
+.saiba-mais, #playBtn {
+    width: 80%; /* Largura fluida para o botão */
+    max-width: 280px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: var(--accent-light);
+    color: #013a63;
+    box-shadow: var(--shadow);
+}
 
-        .saiba-mais {
-            display: flex;
-            align-items: center;
-            gap: 8px;                     /* Espaçamento entre ícone e texto */
-            padding: 10px 24px;           /* Padding interno do botão */
-            border: none;                 /* Sem borda */
-            border-radius: 50px;          /* Botão arredondado */
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: none;        /* Remove sublinhado */
-            box-shadow: var(--shadow);    /* Sombra do botão */
-            color: #013a63;               /* Cor do texto */
-            background-color: #f1bcf1;   /* Cor de fundo */
-        }
+.saiba-mais:hover, #playBtn:hover {
+    background-color: #f796f7;
+    transform: scale(1.05);
+}
 
-        .saiba-mais:hover {
-            background-color: #f796f7;   /* Cor de fundo ao passar mouse */
-        }
+h1, p {
+    color: #ffffff;
+    font-size: 13px;
+    margin: 5px 0;
+}
 
-        h1 {
-            color: #ffffff;
-            margin-top: 2px;
-            margin-bottom: 2px;
-            font-size: 13px;
-            }
-            #radio {
-            width: 60%;
-            max-width: 400px;
-            height: 40px;
-            margin: 10px auto;
-            display: block;
-            background: transparent;
-            object-fit: none;
-            opacity: 0;
-            }
-            #playBtn {
-            padding: 10px;
-            font-size: 13px;
-            background: #f1bcf1;
-            color: #013a63;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-            }
-            #playBtn:hover {
-            background: #f796f7;
-        }
-        p {
-            color: #ffffff;
-        }
-        /* =============================== */
-        /* RESPONSIVIDADE                  */
-        /* =============================== */
-        @media (min-width: 1440px) {
-            .container {
-                width: calc(50vw - 10px);   /* Ajuste proporcional em telas maiores */
-            }
-            .video-section iframe {
-                max-width: 60vw;            /* Aumenta tamanho do vídeo */
-            }
-        }
+#radio {
+    display: none; /* Escondido pois usamos o botão personalizado */
+}
+
+/* =============================== */
+/* 5. BOTÕES FLUTUANTES            */
+/* =============================== */
+.floating-buttons {
+    position: fixed;
+    right: 15px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1000;
+}
+
+.floating-buttons a {
+    width: var(--button-size);
+    height: var(--button-size);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+    opacity: 0.9;
+}
+
+.floating-buttons a:hover {
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+.yt-btn { background: var(--primary-color); }
+.insta-btn { background: var(--insta-color); }
+.location-btn { background: var(--location-color); }
+
+.floating-buttons svg, .floating-buttons img {
+    width: 24px;
+    height: 24px;
+}
+
+/* =============================== */
+/* 6. RODAPÉ                       */
+/* =============================== */
+footer {
+    margin-top: auto; /* Empurra para o final da página */
+    padding: 30px 0;
+    text-align: center;
+    font-size: 10px;
+    color: #ffffff; /* Branco com transparência */
+}
+
+/* Ajustes para telas muito pequenas (ex: iPhone SE antigo) */
+@media (max-width: 350px) {
+    .description h3, p { font-size: 12px; }
+    :root { --button-size: 48px; }
+}
